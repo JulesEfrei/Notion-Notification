@@ -12,7 +12,6 @@ public class CmdExecution {
     public void addCommand(String command) {
         this.cmd = command;
         processBuilder.command("bash", "-c", cmd);
-        System.out.print(cmd);
     }
 
     public void getCommand() {
@@ -47,6 +46,6 @@ public class CmdExecution {
             System.out.print(err);
         }
 
-        System.out.print(output);
+        System.out.println("\n" + output);
     }
 }
