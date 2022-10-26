@@ -3,13 +3,14 @@ package Env;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class EnvReader {
 
     private String filePath = "./.env";
     private String notion_token, database_id, database_url;
-    private ArrayList<String> content = new ArrayList<String>();
+    private Map<String, String> content = new HashMap<String, String>();
 
     //Read File on construction and store data in variable
     public EnvReader() {
@@ -19,7 +20,8 @@ public class EnvReader {
             String currLine = reader.readLine();
 
             while(currLine != null) {
-                this.content.add(currLine); //Replace by dictionnary => {notion: <value>, url: <value>, ...}
+                String[] splitLine = currLine.split("=");
+                this.content.put(splitLine[0], splitLine[1]);
                 currLine = reader.readLine();
             }
 
@@ -33,7 +35,15 @@ public class EnvReader {
     }
 
     public String getNotion_token() {
-        return content.get(0).split("=")[1];
+        return content.get("personal_notion_token");
+    }
+
+    public String getDatabase_id() {
+        return content.get("database_id");
+    }
+
+    public String getDatabase_url() {
+        return content.get("database_url");
     }
 
 
