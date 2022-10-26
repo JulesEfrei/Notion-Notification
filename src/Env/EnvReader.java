@@ -20,7 +20,7 @@ public class EnvReader {
             String currLine = reader.readLine();
 
             while(currLine != null) {
-                String[] splitLine = currLine.split("=");
+                String[] splitLine = currLine.split("=", 2);
                 this.content.put(splitLine[0], splitLine[1]);
                 currLine = reader.readLine();
             }
