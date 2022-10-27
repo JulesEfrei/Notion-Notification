@@ -34,6 +34,14 @@ public class EnvReader {
         System.out.println(this.filePath);
     }
 
+    public String getKeys(String key) {
+        if(content.get(key) != null) {
+            return content.get(key);
+        } else {
+            return "Key " + key + " does not exist";
+        }
+    }
+
     public String getNotion_token() {
         return content.get("personal_notion_token");
     }
